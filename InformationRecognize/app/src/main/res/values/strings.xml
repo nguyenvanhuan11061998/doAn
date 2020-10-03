@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">InformationRecognize</string>
+    <string name="forgot_password">Quên mật khẩu</string>
+    <string name="login">Đăng nhập</string>
+    <string name="ban_chua_nhap_ten_dang_nhap">Bạn chưa nhập tên đăng nhập</string>
+    <string name="ban_chua_nhap_mat_khau">Bạn chưa nhập mật khẩu</string>
+</resources>

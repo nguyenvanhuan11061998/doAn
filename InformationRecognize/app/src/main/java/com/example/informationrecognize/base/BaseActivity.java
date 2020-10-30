@@ -9,6 +9,8 @@ import androidx.lifecycle.ViewModelProvider;
 
 import com.example.informationrecognize.R;
 
+import butterknife.ButterKnife;
+
 public abstract class BaseActivity extends AppCompatActivity {
     private FragmentTransaction transaction;
 
@@ -16,11 +18,12 @@ public abstract class BaseActivity extends AppCompatActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(getLayoutId());
+        ButterKnife.bind(this);
         transaction = getSupportFragmentManager().beginTransaction();
         initAct();
     }
 
-    private int getLayoutId() {
+    protected int getLayoutId() {
         return R.layout.layout_container;
     }
 

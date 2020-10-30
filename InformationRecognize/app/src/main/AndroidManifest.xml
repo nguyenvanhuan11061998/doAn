@@ -26,7 +26,7 @@
         <activity android:name=".base.BaseActivity"/>
         <activity android:name=".login.LoginActivity">
         </activity>
-        <activity android:name=".MainActivity"/>
+        <activity android:name=".main.MainActivity"/>
 
         <provider
             android:name="androidx.core.content.FileProvider"

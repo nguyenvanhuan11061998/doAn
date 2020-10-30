@@ -15,7 +15,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".MainActivity">
+        <activity android:name=".startView.view.StartViewActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -26,6 +26,7 @@
         <activity android:name=".base.BaseActivity"/>
         <activity android:name=".login.LoginActivity">
         </activity>
+        <activity android:name=".MainActivity"/>
 
         <provider
             android:name="androidx.core.content.FileProvider"

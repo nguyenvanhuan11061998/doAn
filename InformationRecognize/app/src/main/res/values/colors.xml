@@ -6,4 +6,6 @@
     <color name="colorPink">#FF7B71</color>
     <color name="colorBlue">#0055FF</color>
     <color name="colorWhile">#ffffff</color>
+    <color name="colorRed">#FF0000</color>
+    <color name="colorBlack">#000000</color>
 </resources>

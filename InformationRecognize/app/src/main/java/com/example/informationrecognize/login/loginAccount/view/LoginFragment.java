@@ -1,4 +1,4 @@
-package com.example.informationrecognize.login.view;
+package com.example.informationrecognize.login.loginAccount.view;
 
 import android.view.View;
 import android.widget.Button;
@@ -12,7 +12,7 @@ import com.example.informationrecognize.R;
 import com.example.informationrecognize.Utils.AsteriskPasswordTransformationMethod;
 import com.example.informationrecognize.Utils.Utils;
 import com.example.informationrecognize.base.BaseFragment;
-import com.example.informationrecognize.login.viewModel.LoginViewModel;
+import com.example.informationrecognize.login.loginAccount.viewModel.LoginViewModel;
 
 import butterknife.BindView;
 import butterknife.OnClick;

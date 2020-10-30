@@ -4,4 +4,12 @@
     <string name="login">Đăng nhập</string>
     <string name="ban_chua_nhap_ten_dang_nhap">Bạn chưa nhập tên đăng nhập</string>
     <string name="ban_chua_nhap_mat_khau">Bạn chưa nhập mật khẩu</string>
+    <string name="doi_mat_khau">Đổi mật khẩu</string>
+    <string name="nhap_mat_khau_cu">Nhập mật khẩu cũ</string>
+    <string name="nhap_mat_khau_moi">Nhập mật khẩu mới</string>
+    <string name="nhap_lai_mat_khau_moi">Nhập lại mật khẩu mới</string>
+    <string name="xac_nhan">Xác nhận</string>
+    <string name="diem_danh_sinh_vien_tlu">Điểm danh sinh viên</string>
+    <string name="dai_hoc_thuy_loi">Đại học Thủy Lợi</string>
+    <string name="dang_nhap_tai_khoan">Đăng nhập tài khoản</string>
 </resources>

@@ -1,8 +1,11 @@
-package com.example.informationrecognize.login.viewModel;
+package com.example.informationrecognize.login.loginAccount.viewModel;
 
 import androidx.lifecycle.MutableLiveData;
+import androidx.lifecycle.ViewModel;
 
-public class LoginViewModel {
+import com.example.informationrecognize.base.ViewModelCommon;
+
+public class LoginViewModel extends ViewModelCommon {
     public MutableLiveData<Boolean> isShowPass = new MutableLiveData<>();
 
     public void initViewModel(){

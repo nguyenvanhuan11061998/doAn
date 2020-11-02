@@ -1,19 +1,21 @@
 package com.example.informationrecognize.main.checkIn.view;
 
+import androidx.recyclerview.widget.RecyclerView;
+
 import com.example.informationrecognize.R;
 import com.example.informationrecognize.base.BaseFragment;
+
+import butterknife.BindView;
 
 public class CheckInFragment extends BaseFragment {
     private static volatile CheckInFragment fInstance;
 
+    @BindView(R.id.list_room)
+    RecyclerView roomList;
+
     @Override
     protected int getLayoutId() {
         return R.layout.fragment_check_in;
-    }
-
-    @Override
-    protected void initFragment() {
-
     }
 
     public static CheckInFragment getInstance() {
@@ -21,5 +23,10 @@ public class CheckInFragment extends BaseFragment {
             fInstance = new CheckInFragment();
         }
         return fInstance;
+    }
+
+    @Override
+    protected void initFragment() {
+
     }
 }

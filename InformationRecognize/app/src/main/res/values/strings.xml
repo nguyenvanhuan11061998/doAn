@@ -17,4 +17,8 @@
     <string name="si_so">Sĩ số: </string>
     <string name="thoi_gian_thi">Thời gian thi</string>
     <string name="thoi_gian_bat_dau">Thời gian bắt đầu:</string>
+    <string name="danh_sach_phong_thi">Danh sách phòng thi</string>
+    <string name="da_co_loi_xay_ra">Đã có lỗi sảy ra, vui lòng kiểm tra lại</string>
+    <string name="tuy_chon">Tùy chọn</string>
+    <string name="thong_tin_ca_nhan">Thông tin cá nhân</string>
 </resources>

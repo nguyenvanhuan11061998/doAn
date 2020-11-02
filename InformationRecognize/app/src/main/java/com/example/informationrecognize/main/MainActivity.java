@@ -14,7 +14,7 @@ import com.example.informationrecognize.base.BaseActivity;
 import com.example.informationrecognize.main.checkIn.view.CheckInFragment;
 import com.example.informationrecognize.main.homeFunction.view.HomeFragment;
 import com.example.informationrecognize.main.information.view.InformationFragment;
-import com.example.informationrecognize.main.other.view.OtherFragment;
+import com.example.informationrecognize.main.other.mvvm.view.OtherFragment;
 
 import java.util.ArrayList;
 
@@ -142,5 +142,9 @@ public class MainActivity extends BaseActivity {
 
             }
         });
+    }
+
+    public void pustView(Fragment fragment) {
+        pushView(fragment);
     }
 }

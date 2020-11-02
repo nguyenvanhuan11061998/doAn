@@ -41,7 +41,7 @@ public class LoginFragment extends BaseFragment {
 
     @Override
     protected void initFragment() {
-        viewModel = new LoginViewModel();
+        viewModel = getViewModel(LoginViewModel.class);
         viewModel.initViewModel();
         initLiveData();
     }
@@ -72,7 +72,7 @@ public class LoginFragment extends BaseFragment {
                     Toast.makeText(getContext(), R.string.ban_chua_nhap_mat_khau,Toast.LENGTH_SHORT).show();
                     return;
                 } else {
-
+                    viewModel.loginAccount(userNameEditText.getText().toString().trim(), passwordEditText.getText().toString().trim());
                 }
                 break;
             case R.id.img_show_password:

@@ -27,6 +27,7 @@
         <activity android:name=".login.LoginActivity">
         </activity>
         <activity android:name=".main.MainActivity"/>
+        <activity android:name=".main.other.personalInfor.OtherUtilsActivity"/>
 
         <provider
             android:name="androidx.core.content.FileProvider"

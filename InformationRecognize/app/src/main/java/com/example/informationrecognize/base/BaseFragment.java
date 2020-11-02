@@ -1,5 +1,6 @@
 package com.example.informationrecognize.base;
 
+import android.app.Activity;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -8,20 +9,17 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.ViewModelProvider;
 
 import butterknife.ButterKnife;
 
 public abstract class BaseFragment extends Fragment {
-    protected BaseActivity mBaseActivity;
+    protected Activity activity;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
-        mBaseActivity = (BaseActivity) getActivity();
-        if (mBaseActivity == null)
-            return;
-
+        activity = getActivity();
     }
 
     @Nullable
@@ -40,4 +38,11 @@ public abstract class BaseFragment extends Fragment {
     protected abstract int getLayoutId();
 
     protected abstract void initFragment();
+
+    protected <OUT extends ViewModelCommon>  OUT getViewModel(Class<? extends ViewModelCommon> viewModelType) {
+        ViewModelProvider.Factory factory = new ViewModelProvider.NewInstanceFactory();
+        OUT vm = (OUT) new ViewModelProvider(this, factory).get(viewModelType);
+        vm.setActivity(activity);
+        return vm;
+    }
 }

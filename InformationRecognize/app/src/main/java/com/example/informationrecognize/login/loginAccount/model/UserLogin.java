@@ -1,13 +1,31 @@
 package com.example.informationrecognize.login.loginAccount.model;
 
+import com.google.gson.annotations.SerializedName;
+
 public class UserLogin {
 
+    @SerializedName("username")
     private String userName;
+    @SerializedName("password")
     private String password;
+    @SerializedName("name_user")
     private String nameUser;
+    @SerializedName("id_user")
     private String idUser;
+    @SerializedName("phoneUser")
     private String phoneUser;
+    @SerializedName("image_user")
     private String imageUser;
+    @SerializedName("email")
+    private String emailUser;
+
+    public String getEmailUser() {
+        return emailUser == null ? "" : emailUser;
+    }
+
+    public void setEmailUser(String emailUser) {
+        this.emailUser = emailUser;
+    }
 
     public UserLogin() {
     }

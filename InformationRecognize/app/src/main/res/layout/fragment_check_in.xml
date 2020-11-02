@@ -24,7 +24,7 @@
             android:id="@+id/tv_title"
             android:textStyle="bold"
             android:textSize="16sp"
-            android:textColor="@color/colorWhile"
+            android:textColor="@color/colorWhite"
             android:layout_centerInParent="true"
             android:text="@string/danh_sach_phong_thi"/>
 

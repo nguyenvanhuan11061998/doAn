@@ -32,6 +32,7 @@ public class StartViewModel  extends ViewModelCommon {
         } else {
             callApiLoadDataUser(idUser);
         }
+
     }
 
     private void callApiLoadDataUser(String idUser) {

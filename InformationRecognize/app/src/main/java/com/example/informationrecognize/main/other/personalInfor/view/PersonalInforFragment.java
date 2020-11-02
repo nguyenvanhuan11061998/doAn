@@ -10,6 +10,7 @@ import com.example.informationrecognize.base.BaseFragment;
 import com.example.informationrecognize.login.loginAccount.model.UserLogin;
 import com.example.informationrecognize.main.other.personalInfor.viewModel.PersonalInforViewModel;
 import com.nostra13.universalimageloader.core.ImageLoader;
+import com.nostra13.universalimageloader.core.ImageLoaderConfiguration;
 
 import butterknife.BindView;
 import de.hdodenhof.circleimageview.CircleImageView;
@@ -58,6 +59,7 @@ public class PersonalInforFragment extends BaseFragment {
 
     private void initData(UserLogin userLogin) {
         if (!Utils.stringNullOrEmpty(userLogin.getImageUser())) {
+            ImageLoader.getInstance().init(ImageLoaderConfiguration.createDefault(getActivity()));
             ImageLoader.getInstance().displayImage(userLogin.getImageUser(), imgUser, Utils.optionAvatar);
         }
         tvIdUser.setText(userLogin.getIdUser());

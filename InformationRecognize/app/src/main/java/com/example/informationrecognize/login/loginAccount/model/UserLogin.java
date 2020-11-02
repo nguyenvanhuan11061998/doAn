@@ -8,13 +8,13 @@ public class UserLogin {
     private String userName;
     @SerializedName("password")
     private String password;
-    @SerializedName("name_user")
+    @SerializedName("nameUser")
     private String nameUser;
-    @SerializedName("id_user")
+    @SerializedName("idUser")
     private String idUser;
     @SerializedName("phoneUser")
     private String phoneUser;
-    @SerializedName("image_user")
+    @SerializedName("imageUser")
     private String imageUser;
     @SerializedName("email")
     private String emailUser;
@@ -56,7 +56,7 @@ public class UserLogin {
     }
 
     public String getNameUser() {
-        return nameUser == nameUser ? "" : nameUser;
+        return nameUser == null ? "" : nameUser;
     }
 
     public void setNameUser(String nameUser) {

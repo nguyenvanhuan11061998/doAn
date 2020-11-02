@@ -1,7 +1,7 @@
 package com.example.informationrecognize.base.baseApi;
 
 import com.example.informationrecognize.login.loginAccount.model.LoginAccount;
-import com.example.informationrecognize.login.loginAccount.model.UserLogin;
+import com.example.informationrecognize.main.other.changePassword.model.ChangePasswordModel;
 
 import retrofit2.Call;
 import retrofit2.http.Field;
@@ -16,5 +16,11 @@ public interface ApiRepository {
 
     @FormUrlEncoded
     @POST("getUserData.php")
-    Call<LoginAccount> getUserData(@Field("id_user") String userId);
+    Call<LoginAccount> getUserData(@Field("idUser") String userId);
+
+    @FormUrlEncoded
+    @POST("changePassword.php")
+    Call<ChangePasswordModel> changePasword(@Field("username") String username,
+                                            @Field("old_password") String password,
+                                            @Field("new_password") String newPassword);
 }

@@ -10,6 +10,8 @@ import com.example.informationrecognize.R;
 import com.example.informationrecognize.base.BaseFragment;
 import com.example.informationrecognize.main.other.changePassword.viewModel.ChangePasswordViewModel;
 
+import java.util.logging.Handler;
+
 import butterknife.BindView;
 import butterknife.OnClick;
 
@@ -46,19 +48,18 @@ public class ChangePasswordFragment extends BaseFragment {
         return new ChangePasswordFragment();
     }
 
-    @OnClick({R.id.btn_confirm})
+    @OnClick({R.id.btn_confirm, R.id.img_back})
     void onClick(View view) {
         switch (view.getId()) {
             case R.id.btn_confirm:
-                viewModel.getNewPassword().postValue(edtPassword.getText().toString().trim());
-                viewModel.getOldPasword().postValue(edtOldPassword.getText().toString().trim());
-                viewModel.getNewPasswordAgain().postValue(edtAgainPassword.getText().toString().trim());
+                viewModel.getNewPassword().setValue(edtPassword.getText().toString().trim());
+                viewModel.getOldPasword().setValue(edtOldPassword.getText().toString().trim());
+                viewModel.getNewPasswordAgain().setValue(edtAgainPassword.getText().toString().trim());
 
                 viewModel.changePassword();
                 break;
-
-            case R.id.cv_change_password:
-
+            case R.id.img_back:
+                getActivity().finish();
                 break;
         }
     }

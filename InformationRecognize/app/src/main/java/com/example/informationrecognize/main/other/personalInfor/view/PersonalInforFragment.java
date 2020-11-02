@@ -1,5 +1,6 @@
 package com.example.informationrecognize.main.other.personalInfor.view;
 
+import android.view.View;
 import android.widget.TextView;
 
 import androidx.lifecycle.Observer;
@@ -13,6 +14,7 @@ import com.nostra13.universalimageloader.core.ImageLoader;
 import com.nostra13.universalimageloader.core.ImageLoaderConfiguration;
 
 import butterknife.BindView;
+import butterknife.OnClick;
 import de.hdodenhof.circleimageview.CircleImageView;
 
 public class PersonalInforFragment extends BaseFragment {
@@ -66,5 +68,14 @@ public class PersonalInforFragment extends BaseFragment {
         tvNameUser.setText(userLogin.getNameUser());
         tvNumberPhone.setText(userLogin.getPhoneUser());
         tvEmail.setText(userLogin.getEmailUser());
+    }
+
+    @OnClick({R.id.img_back})
+    void onClick(View view) {
+        switch (view.getId()) {
+            case R.id.img_back:
+                getActivity().finish();
+                break;
+        }
     }
 }

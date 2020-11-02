@@ -12,4 +12,9 @@
     <string name="diem_danh_sinh_vien_tlu">Điểm danh sinh viên</string>
     <string name="dai_hoc_thuy_loi">Đại học Thủy Lợi</string>
     <string name="dang_nhap_tai_khoan">Đăng nhập tài khoản</string>
+    <string name="thong_tin_phong_thi">Thông tin phòng thi</string>
+    <string name="dang_cho">Đang chờ</string>
+    <string name="si_so">Sĩ số: </string>
+    <string name="thoi_gian_thi">Thời gian thi</string>
+    <string name="thoi_gian_bat_dau">Thời gian bắt đầu:</string>
 </resources>

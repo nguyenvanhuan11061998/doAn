@@ -20,10 +20,17 @@ import butterknife.ButterKnife;
 public class ClassListAdapter extends RecyclerView.Adapter<ClassListAdapter.ViewHolder> {
     private List<ClassItemModel> listData;
     private Context context;
+    private ClickItemListener clickItemListener;
 
-    public ClassListAdapter(Context context, List<ClassItemModel> listData) {
+    public ClassListAdapter(Context context, List<ClassItemModel> listData, ClickItemListener clickItemListener) {
         this.listData = listData;
         this.context = context;
+        this.clickItemListener = clickItemListener;
+    }
+
+    public void setData(List<ClassItemModel> listData) {
+        this.listData = listData;
+        notifyDataSetChanged();
     }
 
     @NonNull
@@ -79,6 +86,19 @@ public class ClassListAdapter extends RecyclerView.Adapter<ClassListAdapter.View
             numberStudentTextView.setText(item.getNumberStudent());
             examTimeTextView.setText(item.getTimeExam());
             startTimeTextView.setText(item.getStartTime());
+
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    if (clickItemListener != null) {
+                        clickItemListener.onClickItem(getAdapterPosition());
+                    }
+                }
+            });
         }
+    }
+
+    public interface ClickItemListener {
+        void onClickItem (int position);
     }
 }

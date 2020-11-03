@@ -25,4 +25,6 @@
     <string name="mat_khau_hien_tai_khong_chinh_xac">Mật khẩu hiện tại không chính xác</string>
     <string name="mat_khau_moi_phai_du_8_ky_tu">Mật khẩu mới phải đủ 8 ký tự</string>
     <string name="nhap_lai_mat_khau_khong_chinh_xac">Nhập lại mật khẩu không chính xác</string>
+    <string name="bat_dau_thi">"Bắt đầu thi: "</string>
+    <string name="diem_danh_sinh_vien">Điểm danh sinh viên</string>
 </resources>

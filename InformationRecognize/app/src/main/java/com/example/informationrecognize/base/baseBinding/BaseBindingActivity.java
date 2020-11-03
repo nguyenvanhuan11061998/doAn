@@ -13,6 +13,8 @@ import androidx.lifecycle.ViewModelProvider;
 import com.example.informationrecognize.R;
 import com.example.informationrecognize.base.ViewModelCommon;
 
+import butterknife.ButterKnife;
+
 public abstract class BaseBindingActivity <BD extends ViewDataBinding> extends AppCompatActivity {
     protected BD binding;
     private FragmentTransaction transaction;
@@ -21,6 +23,7 @@ public abstract class BaseBindingActivity <BD extends ViewDataBinding> extends A
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         binding = DataBindingUtil.setContentView(this, getLayoutId());
+        ButterKnife.bind(this, binding.getRoot());
         transaction = getSupportFragmentManager().beginTransaction();
         intAct();
     }

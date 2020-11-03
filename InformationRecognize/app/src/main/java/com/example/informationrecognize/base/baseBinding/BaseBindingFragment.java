@@ -11,6 +11,8 @@ import androidx.databinding.DataBindingUtil;
 import androidx.databinding.ViewDataBinding;
 import androidx.fragment.app.Fragment;
 
+import butterknife.ButterKnife;
+
 public abstract class BaseBindingFragment <BD extends ViewDataBinding> extends Fragment {
     private BD binding;
 
@@ -18,6 +20,7 @@ public abstract class BaseBindingFragment <BD extends ViewDataBinding> extends F
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         binding = DataBindingUtil.inflate(inflater, getLayoutId(), container, false);
+        ButterKnife.bind(this, binding.getRoot());
         return binding.getRoot();
     }
 

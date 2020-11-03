@@ -57,4 +57,7 @@ dependencies {
     implementation 'de.hdodenhof:circleimageview:3.1.0'
     implementation 'com.nostra13.universalimageloader:universal-image-loader:1.9.5'
 
+    implementation 'com.android.databinding:compiler:1.0-rc0'
+    implementation 'com.github.bumptech.glide:glide:4.9.0'
+
 }

@@ -1,7 +1,7 @@
 package com.example.informationrecognize.base.baseApi;
 
 import com.example.informationrecognize.login.loginAccount.model.LoginAccount;
-import com.example.informationrecognize.main.checkIn.model.ExamRoomModel;
+import com.example.informationrecognize.main.checkIn.mvvm.model.ExamRoomModel;
 import com.example.informationrecognize.main.other.changePassword.model.ChangePasswordModel;
 
 import retrofit2.Call;

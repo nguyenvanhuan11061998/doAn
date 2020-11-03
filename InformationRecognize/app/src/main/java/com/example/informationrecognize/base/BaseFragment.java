@@ -39,9 +39,9 @@ public abstract class BaseFragment extends Fragment {
 
     protected abstract void initFragment();
 
-    protected <OUT extends ViewModelCommon>  OUT getViewModel(Class<? extends ViewModelCommon> viewModelType) {
+    protected <VM extends ViewModelCommon>  VM getViewModel(Class<? extends ViewModelCommon> viewModelType) {
         ViewModelProvider.Factory factory = new ViewModelProvider.NewInstanceFactory();
-        OUT vm = (OUT) new ViewModelProvider(this, factory).get(viewModelType);
+        VM vm = (VM) new ViewModelProvider(this, factory).get(viewModelType);
         vm.setActivity(activity);
         return vm;
     }

@@ -1,4 +1,4 @@
-package com.example.informationrecognize.main.checkIn.view;
+package com.example.informationrecognize.main.checkIn.mvvm.view;
 
 import android.widget.Toast;
 
@@ -7,8 +7,8 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.informationrecognize.R;
 import com.example.informationrecognize.base.BaseFragment;
-import com.example.informationrecognize.main.checkIn.model.ClassItemModel;
-import com.example.informationrecognize.main.checkIn.viewModel.CheckInViewModel;
+import com.example.informationrecognize.main.checkIn.mvvm.model.ClassItemModel;
+import com.example.informationrecognize.main.checkIn.mvvm.viewModel.CheckInViewModel;
 
 import java.util.List;
 

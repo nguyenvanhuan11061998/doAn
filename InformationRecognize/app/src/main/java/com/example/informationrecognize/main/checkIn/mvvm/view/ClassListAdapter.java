@@ -1,4 +1,4 @@
-package com.example.informationrecognize.main.checkIn.view;
+package com.example.informationrecognize.main.checkIn.mvvm.view;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -10,7 +10,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.informationrecognize.R;
-import com.example.informationrecognize.main.checkIn.model.ClassItemModel;
+import com.example.informationrecognize.main.checkIn.mvvm.model.ClassItemModel;
 
 import java.util.List;
 

@@ -1,4 +1,4 @@
-package com.example.informationrecognize.main.checkIn.viewModel;
+package com.example.informationrecognize.main.checkIn.mvvm.viewModel;
 
 import android.widget.Toast;
 
@@ -8,8 +8,8 @@ import com.example.informationrecognize.R;
 import com.example.informationrecognize.Utils.Utils;
 import com.example.informationrecognize.base.ViewModelCommon;
 import com.example.informationrecognize.base.baseApi.ApiUtils;
-import com.example.informationrecognize.main.checkIn.model.ClassItemModel;
-import com.example.informationrecognize.main.checkIn.model.ExamRoomModel;
+import com.example.informationrecognize.main.checkIn.mvvm.model.ClassItemModel;
+import com.example.informationrecognize.main.checkIn.mvvm.model.ExamRoomModel;
 
 import java.util.List;
 

@@ -1,4 +1,4 @@
-package com.example.informationrecognize.main.checkIn.model;
+package com.example.informationrecognize.main.checkIn.mvvm.model;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;

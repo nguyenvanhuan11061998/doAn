@@ -11,7 +11,7 @@ import com.aurelhubert.ahbottomnavigation.AHBottomNavigation;
 import com.aurelhubert.ahbottomnavigation.AHBottomNavigationItem;
 import com.example.informationrecognize.R;
 import com.example.informationrecognize.base.BaseActivity;
-import com.example.informationrecognize.main.checkIn.view.CheckInFragment;
+import com.example.informationrecognize.main.checkIn.mvvm.view.CheckInFragment;
 import com.example.informationrecognize.main.homeFunction.view.HomeFragment;
 import com.example.informationrecognize.main.information.view.InformationFragment;
 import com.example.informationrecognize.main.other.mvvm.view.OtherFragment;

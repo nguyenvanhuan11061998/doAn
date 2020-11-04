@@ -1,5 +1,6 @@
 package com.example.informationrecognize.main.checkIn.mvvm.view;
 
+import android.content.Intent;
 import android.widget.Toast;
 
 import androidx.lifecycle.Observer;
@@ -7,12 +8,15 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.informationrecognize.R;
 import com.example.informationrecognize.base.BaseFragment;
+import com.example.informationrecognize.main.checkIn.checkInStudent.CheckInStudentActivity;
 import com.example.informationrecognize.main.checkIn.mvvm.model.ClassItemModel;
 import com.example.informationrecognize.main.checkIn.mvvm.viewModel.CheckInViewModel;
 
 import java.util.List;
 
 import butterknife.BindView;
+
+import static com.example.informationrecognize.main.checkIn.checkInStudent.CheckInStudentActivity.ID_ROOM;
 
 public class CheckInFragment extends BaseFragment implements ClassListAdapter.ClickItemListener {
     private static volatile CheckInFragment fInstance;
@@ -67,7 +71,9 @@ public class CheckInFragment extends BaseFragment implements ClassListAdapter.Cl
 
     @Override
     public void onClickItem(int position) {
-        Toast.makeText(getActivity(), "====: "+listExamRoom.get(position).getIdExamRoom(), Toast.LENGTH_SHORT).show();
+        Intent intent = new Intent(getActivity(), CheckInStudentActivity.class);
+        intent.putExtra(ID_ROOM, listExamRoom.get(position).getIdExamRoom());
+        startActivity(intent);
 
     }
 }

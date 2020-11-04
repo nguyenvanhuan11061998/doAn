@@ -13,21 +13,27 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.informationrecognize.BR;
 import com.example.informationrecognize.R;
 import com.example.informationrecognize.main.checkIn.checkInStudent.model.StudentModel;
-
-import java.util.ArrayList;
+import java.util.List;
 
 public class CheckInStudentAdapter extends RecyclerView.Adapter<CheckInStudentAdapter.ViewHolder> {
 
-    private ArrayList<StudentModel> listData;
+    private List<StudentModel> listData;
     private Context context;
+    private ClickItemListener clickItemListener;
 
-    public CheckInStudentAdapter(ArrayList<StudentModel> listData, Context context) {
+    public CheckInStudentAdapter(Context context, List<StudentModel> listData, ClickItemListener clickItemListener) {
         this.listData = listData;
         this.context = context;
+        this.clickItemListener = clickItemListener;
     }
 
-    public void setListData(ArrayList<StudentModel> listData) {
+    public List<StudentModel> getListData() {
+        return listData;
+    }
+
+    public void setListData(List<StudentModel> listData) {
         this.listData = listData;
+        notifyDataSetChanged();
     }
 
     @NonNull
@@ -41,10 +47,11 @@ public class CheckInStudentAdapter extends RecyclerView.Adapter<CheckInStudentAd
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         StudentModel item = listData.get(position);
         holder.binding.setVariable(BR.item, item);
+        holder.binding.executePendingBindings();
     }
 
     @Override
-    public int getItemCount() {
+    public int getItemCount()    {
         return listData == null ? 0 : listData.size();
     }
 
@@ -54,7 +61,19 @@ public class CheckInStudentAdapter extends RecyclerView.Adapter<CheckInStudentAd
         public ViewHolder(@NonNull ViewDataBinding binding) {
             super(binding.getRoot());
             this.binding = binding;
+
+            binding.getRoot().setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    if (clickItemListener != null) {
+                        clickItemListener.onClickItem(getAdapterPosition());
+                    }
+                }
+            });
         }
     }
 
+    public interface ClickItemListener {
+        void onClickItem(int position);
+    }
 }

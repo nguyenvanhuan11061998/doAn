@@ -1,12 +1,25 @@
 package com.example.informationrecognize.main.checkIn.checkInStudent.model;
 
 public class StudentModel {
+    // mã sinh viên
     private String idStudent;
+    // tên sinh viên
     private String nameStudent;
+    // ảnh sinh viên
     private String imageStudent;
+    // chứng minh nhân dân
     private String idPeople;
+    // khóa
     private String courseStudent;
+    // lớp
     private String classRoom;
+    //trường
+    private String university;
+    // giới tính
+    private String sex;
+    // khoa/ ngành
+    private String branch;
+    // lưu giá trị đã check in hay chưa
     private boolean isCheckIn;
 
     public String getClassRoom() {

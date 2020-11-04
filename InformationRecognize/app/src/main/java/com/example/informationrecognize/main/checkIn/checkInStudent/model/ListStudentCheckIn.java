@@ -13,7 +13,7 @@ public class ListStudentCheckIn {
     @Expose
     private String message;
 
-    @SerializedName("studentModels")
+    @SerializedName("listStudent")
     @Expose
     private List<StudentModel> studentModels;
 

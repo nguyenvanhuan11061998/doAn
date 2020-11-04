@@ -28,8 +28,8 @@ public class CheckInStudentViewModel extends ViewModelCommon {
         this.listStudent = listStudent;
     }
 
-    public void initViewModel(String idRoom) {
-        Call<ListStudentCheckIn> getListStudentCheckIn = ApiUtils.getDataApi().getListStudentCheckIn(idRoom);
+    public void initViewModel(String idExamRoom) {
+        Call<ListStudentCheckIn> getListStudentCheckIn = ApiUtils.getDataApi().getListStudentCheckIn(idExamRoom);
         getListStudentCheckIn.enqueue(new Callback<ListStudentCheckIn>() {
             @Override
             public void onResponse(Call<ListStudentCheckIn> call, Response<ListStudentCheckIn> response) {

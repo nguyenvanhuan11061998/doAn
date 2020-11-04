@@ -32,5 +32,5 @@ public interface ApiRepository {
 
     @FormUrlEncoded
     @POST("getListStudentCheckIn.php")
-    Call<ListStudentCheckIn> getListStudentCheckIn(@Field("idRoom") String idUser);
+    Call<ListStudentCheckIn> getListStudentCheckIn(@Field("idExamRoom") String idExamRoom);
 }

@@ -3,7 +3,9 @@ package com.example.informationrecognize.main.checkIn.mvvm.model;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-public class ClassItemModel {
+import java.io.Serializable;
+
+public class ClassItemModel implements Serializable {
     // tên lớp/ phòng thi
     @SerializedName("idRoom")
     @Expose

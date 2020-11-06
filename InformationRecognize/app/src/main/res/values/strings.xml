@@ -27,4 +27,14 @@
     <string name="nhap_lai_mat_khau_khong_chinh_xac">Nhập lại mật khẩu không chính xác</string>
     <string name="bat_dau_thi">"Bắt đầu thi: "</string>
     <string name="diem_danh_sinh_vien">Điểm danh sinh viên</string>
+    <string name="thong_tin_sinh_vien">Thông tin sinh viên</string>
+    <string name="ho_va_ten">Họ và tên: </string>
+    <string name="ma_sinh_vien">Mã sinh viên:</string>
+    <string name="chung_minh_nhan_dan">Chứng minh nhân dân:</string>
+    <string name="lop">Lớp:</string>
+    <string name="khoa">Khoa:</string>
+    <string name="mon_thi">Môn thi:</string>
+    <string name="phong_thi">Phòng thi:</string>
+    <string name="thoi_gian_thi_v2">"Thời gian thi: "</string>
+    <string name="trag_thai">Trạng thái</string>
 </resources>

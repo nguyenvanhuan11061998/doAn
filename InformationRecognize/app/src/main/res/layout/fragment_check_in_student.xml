@@ -3,6 +3,13 @@
 
     <data>
 
+        <variable
+            name="listener"
+            type="com.example.informationrecognize.main.checkIn.checkInStudent.view.CheckInStudentFragment.CheckInStudentListener" />
+
+        <variable
+            name="examRoom"
+            type="com.example.informationrecognize.main.checkIn.mvvm.model.ClassItemModel" />
 
     </data>
 
@@ -23,7 +30,8 @@
                 android:layout_width="50dp"
                 android:layout_height="50dp"
                 android:padding="15dp"
-                android:src="@drawable/ic_back_v4" />
+                android:src="@drawable/ic_back_v4"
+                android:onClick="@{(v) -> listener.backImageViewClick(v)}"/>
 
             <TextView
                 android:id="@+id/tv_title"
@@ -81,7 +89,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_toRightOf="@+id/tv1"
-                        android:text="302 - A4"
+                        android:text="@{examRoom.getNameClass()}"
                         android:textColor="@color/colorBlack"
                         android:textSize="13sp" />
 
@@ -121,7 +129,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_toRightOf="@+id/tv2"
-                        android:text="Hệ quản trị cơ sở dữ liệu"
+                        android:text="@{examRoom.getSubject()}"
                         android:textColor="@color/colorBlack"
                         android:textSize="13sp" />
 
@@ -144,7 +152,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_toRightOf="@+id/tv3"
-                        android:text="K58"
+                        android:text="@{examRoom.getCourse()}"
                         android:textColor="@color/colorBlack"
                         android:textSize="13sp" />
 
@@ -153,7 +161,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_alignParentRight="true"
-                        android:text="60"
+                        android:text="@{examRoom.getTimeExam()}"
                         android:textColor="@color/colorBlack"
                         android:textSize="13sp" />
 
@@ -185,7 +193,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_toRightOf="@+id/tv_status_exam_room"
-                        android:text="01:34:56"
+                        android:text="@{examRoom.getStartTime()}"
                         android:textColor="@color/colorBlack"
                         android:textSize="13sp"
                         android:textStyle="bold" />

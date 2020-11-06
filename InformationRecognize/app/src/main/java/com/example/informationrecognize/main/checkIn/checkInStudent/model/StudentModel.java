@@ -3,7 +3,9 @@ package com.example.informationrecognize.main.checkIn.checkInStudent.model;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-public class StudentModel {
+import java.io.Serializable;
+
+public class StudentModel implements Serializable {
     // mã sinh viên
     @SerializedName("idStudent")
     @Expose

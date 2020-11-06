@@ -11,6 +11,7 @@ import com.example.informationrecognize.base.baseApi.ApiUtils;
 import com.example.informationrecognize.main.checkIn.mvvm.model.ClassItemModel;
 import com.example.informationrecognize.main.checkIn.mvvm.model.ExamRoomModel;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import retrofit2.Call;

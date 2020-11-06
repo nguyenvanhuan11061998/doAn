@@ -1,6 +1,7 @@
 package com.example.informationrecognize.main.checkIn.infoStudent.view;
 
 import android.os.Bundle;
+import android.view.View;
 
 import androidx.lifecycle.Observer;
 
@@ -10,6 +11,8 @@ import com.example.informationrecognize.databinding.FragmentInfoStudentBinding;
 import com.example.informationrecognize.main.checkIn.checkInStudent.model.StudentModel;
 import com.example.informationrecognize.main.checkIn.infoStudent.viewModel.InfoStudentViewModel;
 import com.example.informationrecognize.main.checkIn.mvvm.model.ClassItemModel;
+
+import butterknife.OnClick;
 
 import static com.example.informationrecognize.main.checkIn.CheckInStudentActivity.ROOM;
 import static com.example.informationrecognize.main.checkIn.checkInStudent.viewModel.CheckInStudentViewModel.STUDENT_MODEL;
@@ -60,5 +63,14 @@ public class InfoStudentFragment extends BaseBindingFragment<FragmentInfoStudent
 
     private void initData() {
 
+    }
+
+    @OnClick({R.id.img_back})
+    void onClick (View view) {
+        switch (view.getId()) {
+            case R.id.img_back:
+                onBackFragment();
+                break;
+        }
     }
 }

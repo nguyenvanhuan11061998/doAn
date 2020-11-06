@@ -45,4 +45,9 @@ public abstract class BaseFragment extends Fragment {
         vm.setActivity(activity);
         return vm;
     }
+
+
+    protected void onBackFragment() {
+        activity.onBackPressed();
+    }
 }

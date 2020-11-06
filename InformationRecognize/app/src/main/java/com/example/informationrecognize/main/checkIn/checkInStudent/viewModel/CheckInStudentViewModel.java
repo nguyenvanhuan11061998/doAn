@@ -1,4 +1,5 @@
 package com.example.informationrecognize.main.checkIn.checkInStudent.viewModel;
+import android.app.Activity;
 import android.os.Bundle;
 import android.widget.Toast;
 
@@ -7,9 +8,12 @@ import androidx.lifecycle.MutableLiveData;
 import com.example.informationrecognize.R;
 import com.example.informationrecognize.base.ViewModelCommon;
 import com.example.informationrecognize.base.baseApi.ApiUtils;
+import com.example.informationrecognize.main.checkIn.CheckInStudentActivity;
 import com.example.informationrecognize.main.checkIn.checkInStudent.model.ListStudentCheckIn;
 import com.example.informationrecognize.main.checkIn.checkInStudent.model.StudentModel;
+import com.example.informationrecognize.main.checkIn.infoStudent.view.InfoStudentFragment;
 import com.example.informationrecognize.main.checkIn.mvvm.model.ClassItemModel;
+import com.example.informationrecognize.main.information.view.InformationFragment;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -17,6 +21,8 @@ import java.util.List;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
+
+import static com.example.informationrecognize.main.checkIn.CheckInStudentActivity.ROOM;
 
 public class CheckInStudentViewModel extends ViewModelCommon {
 
@@ -82,6 +88,10 @@ public class CheckInStudentViewModel extends ViewModelCommon {
         StudentModel studentModel = listStudent.getValue().get(position);
         Bundle bundle = new Bundle();
         bundle.putSerializable(STUDENT_MODEL, studentModel);
+        bundle.putSerializable(ROOM, examRoomModel.getValue());
+
+        CheckInStudentActivity activity = (CheckInStudentActivity) mActivity;
+        activity.pushView(InfoStudentFragment.getInstance(bundle));
     }
 
 

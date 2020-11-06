@@ -28,7 +28,6 @@ public abstract class BaseActivity extends AppCompatActivity {
     }
 
     protected abstract void initAct();
-
     protected void pushView(Fragment fragment) {
         transaction.add(R.id.container_frame, fragment);
         transaction.commitAllowingStateLoss();

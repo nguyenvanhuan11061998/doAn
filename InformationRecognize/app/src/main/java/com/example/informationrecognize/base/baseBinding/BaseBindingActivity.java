@@ -24,7 +24,6 @@ public abstract class BaseBindingActivity <BD extends ViewDataBinding> extends A
         super.onCreate(savedInstanceState);
         binding = DataBindingUtil.setContentView(this, getLayoutId());
         ButterKnife.bind(this, binding.getRoot());
-        transaction = getSupportFragmentManager().beginTransaction();
         intAct();
     }
 
@@ -35,8 +34,10 @@ public abstract class BaseBindingActivity <BD extends ViewDataBinding> extends A
     }
 
     protected void pushView(Fragment fragment) {
+        transaction = getSupportFragmentManager().beginTransaction();
         transaction.add(R.id.container_frame, fragment);
-        transaction.commitAllowingStateLoss();
+        transaction.addToBackStack(fragment.getClass().getSimpleName());
+        transaction.commit();
     }
 
     public <VM extends ViewModelCommon> VM getViewModel(Class<? extends ViewModelCommon> viewModel) {

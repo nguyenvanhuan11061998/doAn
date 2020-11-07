@@ -44,7 +44,17 @@ public class InfoStudentFragment extends BaseBindingFragment<FragmentInfoStudent
             @Override
             public void onChanged(StudentModel studentModel) {
                 if (studentModel != null) {
-                    initData();
+                    binding.setStudent(studentModel);
+                    setViewCheckIn(studentModel.isCheckIn());
+                }
+            }
+        });
+
+        viewModel.getExamRoomModel().observe(this, new Observer<ClassItemModel>() {
+            @Override
+            public void onChanged(ClassItemModel classItemModel) {
+                if (classItemModel != null) {
+                    binding.setExamRoom(classItemModel);
                 }
             }
         });
@@ -61,16 +71,37 @@ public class InfoStudentFragment extends BaseBindingFragment<FragmentInfoStudent
         viewModel.getExamRoomModel().postValue(examRoomModel);
     }
 
-    private void initData() {
 
-    }
-
-    @OnClick({R.id.img_back})
+    @OnClick({R.id.img_back, R.id.btn_check_in})
     void onClick (View view) {
         switch (view.getId()) {
             case R.id.img_back:
                 onBackFragment();
                 break;
+            case R.id.btn_check_in:
+                viewModel.showDialogCheckInStudent(getActivity().getSupportFragmentManager());
+                break;
         }
     }
+
+    public void setViewCheckIn(boolean isCheckIn) {
+        if (isCheckIn) {
+            binding.imgStatus.setImageResource(R.drawable.ic_green_round);
+            binding.tvStatus.setText(getString(R.string.da_diem_danh));
+            binding.tvStatus.setTextColor(getResources().getColor(R.color.colorGreen));
+
+            binding.btnCheckIn.setEnabled(false);
+            binding.btnCheckIn.setText(getString(R.string.da_diem_danh));
+            binding.btnCheckIn.setBackground(getResources().getDrawable(R.drawable.custom_round_corner_button_disable));
+        } else {
+            binding.imgStatus.setImageResource(R.drawable.ic_yellow_round);
+            binding.tvStatus.setText(getString(R.string.chua_diem_danh));
+            binding.tvStatus.setTextColor(getResources().getColor(R.color.colorYellow_v2));
+
+            binding.btnCheckIn.setEnabled(true);
+            binding.btnCheckIn.setText(getString(R.string.diem_danh));
+            binding.btnCheckIn.setBackground(getResources().getDrawable(R.drawable.custom_round_corner_button));
+        }
+    }
+
 }

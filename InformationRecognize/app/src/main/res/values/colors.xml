@@ -10,4 +10,6 @@
     <color name="colorBlack">#000000</color>
     <color name="colorYellow">#FF5722</color>
     <color name="colorYellow_v2">#FF5722</color>
+    <color name="transparent">#00000000</color>
+    <color name="colorGreen">#00FD04</color>
 </resources>

@@ -37,4 +37,8 @@
     <string name="phong_thi">Phòng thi:</string>
     <string name="thoi_gian_thi_v2">"Thời gian thi: "</string>
     <string name="trag_thai">Trạng thái</string>
+    <string name="xac_nhan_diem_danh_sinh_vien">Xác nhận điểm danh sinh viên</string>
+    <string name="chua_diem_danh">Chưa điểm danh</string>
+    <string name="da_diem_danh">Đã điểm danh</string>
+    <string name="diem_danh">Điểm danh</string>
 </resources>

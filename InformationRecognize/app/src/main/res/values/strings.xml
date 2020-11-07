@@ -41,4 +41,6 @@
     <string name="chua_diem_danh">Chưa điểm danh</string>
     <string name="da_diem_danh">Đã điểm danh</string>
     <string name="diem_danh">Điểm danh</string>
+    <string name="ban_co_muon_diem_danh_sinh_vien">Xác nhận điểm danh sinh viên %s, mã sinh viên %s ?</string>
+    <string name="diem_danh_sinh_vien_khong_thanh_cong">Điểm danh sinh viên không thành công.</string>
 </resources>

@@ -11,6 +11,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
 import android.widget.RelativeLayout;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -18,17 +19,22 @@ import androidx.fragment.app.DialogFragment;
 
 import com.example.informationrecognize.R;
 
+import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
 public class ConfirmCheckInDialog extends DialogFragment {
+    @BindView(R.id.tv_des)
+    TextView descTextView;
 
     private String nameStudent = "";
     private String idStudent = "";
 
     private ClickListener clickListener;
 
-    public void setData(ClickListener clickListener) {
+    public void setData(String nameStudent, String idStudent, ClickListener clickListener) {
+        this.nameStudent = nameStudent;
+        this.idStudent = idStudent;
         this.clickListener = clickListener;
     }
 
@@ -59,7 +65,8 @@ public class ConfirmCheckInDialog extends DialogFragment {
     }
 
     private void initView() {
-
+        String message = String.format(getString(R.string.ban_co_muon_diem_danh_sinh_vien), nameStudent, idStudent);
+        descTextView.setText(message);
     }
 
     @OnClick({R.id.btn_close, R.id.btn_check_in})

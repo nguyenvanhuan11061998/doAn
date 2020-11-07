@@ -59,5 +59,6 @@ dependencies {
 
     implementation 'com.android.databinding:compiler:1.0-rc0'
     implementation 'com.github.bumptech.glide:glide:4.9.0'
+    implementation 'org.greenrobot:eventbus:3.1.1'
 
 }

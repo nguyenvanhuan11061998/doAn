@@ -2,6 +2,7 @@ package com.example.informationrecognize.main.checkIn.infoStudent.view;
 
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Toast;
 
 import androidx.lifecycle.Observer;
 
@@ -9,6 +10,7 @@ import com.example.informationrecognize.R;
 import com.example.informationrecognize.base.baseBinding.BaseBindingFragment;
 import com.example.informationrecognize.databinding.FragmentInfoStudentBinding;
 import com.example.informationrecognize.main.checkIn.checkInStudent.model.StudentModel;
+import com.example.informationrecognize.main.checkIn.checkInStudent.viewModel.CheckInSharedViewModel;
 import com.example.informationrecognize.main.checkIn.infoStudent.viewModel.InfoStudentViewModel;
 import com.example.informationrecognize.main.checkIn.mvvm.model.ClassItemModel;
 
@@ -19,6 +21,7 @@ import static com.example.informationrecognize.main.checkIn.checkInStudent.viewM
 
 public class InfoStudentFragment extends BaseBindingFragment<FragmentInfoStudentBinding> {
     private InfoStudentViewModel viewModel;
+    private CheckInSharedViewModel sharedViewModel;
 
     @Override
     protected int getLayoutId() {
@@ -39,6 +42,7 @@ public class InfoStudentFragment extends BaseBindingFragment<FragmentInfoStudent
 
     private void initViewModel() {
         viewModel = getViewModel(InfoStudentViewModel.class);
+        sharedViewModel = getViewModel(CheckInSharedViewModel.class);
 
         viewModel.getStudentModel().observe(this, new Observer<StudentModel>() {
             @Override
@@ -55,6 +59,16 @@ public class InfoStudentFragment extends BaseBindingFragment<FragmentInfoStudent
             public void onChanged(ClassItemModel classItemModel) {
                 if (classItemModel != null) {
                     binding.setExamRoom(classItemModel);
+                }
+            }
+        });
+
+        viewModel.getIsReloadHomeCheckIn().observe(this, new Observer<Boolean>() {
+            @Override
+            public void onChanged(Boolean reloadHomeCheckIn) {
+                if (reloadHomeCheckIn) {
+                    Toast.makeText(getActivity(), "reload", Toast.LENGTH_SHORT).show();
+                    sharedViewModel.getIsReload().postValue(true);
                 }
             }
         });

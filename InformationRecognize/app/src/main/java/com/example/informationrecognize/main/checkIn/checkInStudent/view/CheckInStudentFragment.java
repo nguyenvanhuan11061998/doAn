@@ -10,6 +10,7 @@ import com.example.informationrecognize.R;
 import com.example.informationrecognize.base.baseBinding.BaseBindingFragment;
 import com.example.informationrecognize.databinding.FragmentCheckInStudentBinding;
 import com.example.informationrecognize.main.checkIn.checkInStudent.model.StudentModel;
+import com.example.informationrecognize.main.checkIn.checkInStudent.viewModel.CheckInSharedViewModel;
 import com.example.informationrecognize.main.checkIn.checkInStudent.viewModel.CheckInStudentViewModel;
 import com.example.informationrecognize.main.checkIn.mvvm.model.ClassItemModel;
 
@@ -26,11 +27,17 @@ public class CheckInStudentFragment extends BaseBindingFragment<FragmentCheckInS
     private String idRoom;
     private ClassItemModel examRoomModel;
     private CheckInStudentListener checkInStudentListener;
+    private CheckInSharedViewModel sharedViewModel;
 
     public static CheckInStudentFragment getInstance(Bundle bundle) {
         CheckInStudentFragment checkInStudentFragment = new CheckInStudentFragment();
         checkInStudentFragment.setArguments(bundle);
         return checkInStudentFragment;
+    }
+
+    @Override
+    public void onStart() {
+        super.onStart();
     }
 
     @Override
@@ -53,6 +60,7 @@ public class CheckInStudentFragment extends BaseBindingFragment<FragmentCheckInS
 
     private void initViewModel() {
         viewModel = getViewModel(CheckInStudentViewModel.class);
+        sharedViewModel = getViewModel(CheckInSharedViewModel.class);
         viewModel.initViewModel(idRoom, examRoomModel);
 
         viewModel.getListStudent().observe(this, new Observer<List<StudentModel>>() {
@@ -81,6 +89,15 @@ public class CheckInStudentFragment extends BaseBindingFragment<FragmentCheckInS
             public void onChanged(ClassItemModel examRoomModel) {
                 if (examRoomModel != null) {
                     binding.setExamRoom(examRoomModel);
+                }
+            }
+        });
+
+        sharedViewModel.getIsReload().observe(this, new Observer<Boolean>() {
+            @Override
+            public void onChanged(Boolean isReload) {
+                if (isReload) {
+                    viewModel.initViewModel(idRoom, examRoomModel);
                 }
             }
         });

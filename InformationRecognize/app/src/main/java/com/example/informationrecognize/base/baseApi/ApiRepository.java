@@ -2,6 +2,7 @@ package com.example.informationrecognize.base.baseApi;
 
 import com.example.informationrecognize.login.loginAccount.model.LoginAccount;
 import com.example.informationrecognize.main.checkIn.checkInStudent.model.ListStudentCheckIn;
+import com.example.informationrecognize.main.checkIn.infoStudent.model.CheckInResponse;
 import com.example.informationrecognize.main.checkIn.mvvm.model.ExamRoomModel;
 import com.example.informationrecognize.main.other.changePassword.model.ChangePasswordModel;
 
@@ -33,4 +34,9 @@ public interface ApiRepository {
     @FormUrlEncoded
     @POST("getListStudentCheckIn.php")
     Call<ListStudentCheckIn> getListStudentCheckIn(@Field("idExamRoom") String idExamRoom);
+
+    @FormUrlEncoded
+    @POST("checkIn.php")
+    Call<CheckInResponse> checkInStudent(@Field("idStudent") String idStudent,
+                                         @Field("idExamRoom") String idExamRoom);
 }

@@ -142,7 +142,7 @@
                     android:id="@+id/img_checkIn"
                     android:layout_width="20dp"
                     android:layout_height="20dp"
-                    app:checked="@{item.isCheckIn()}"
+                    checked="@{item.isCheckIn()}"
                     android:src="@drawable/ic_state_checked"/>
 
 

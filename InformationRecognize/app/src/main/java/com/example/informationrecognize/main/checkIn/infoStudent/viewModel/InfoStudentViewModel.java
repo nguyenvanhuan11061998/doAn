@@ -8,6 +8,8 @@ import androidx.lifecycle.MutableLiveData;
 import com.example.informationrecognize.R;
 import com.example.informationrecognize.base.ViewModelCommon;
 import com.example.informationrecognize.base.baseApi.ApiUtils;
+import com.example.informationrecognize.dialog.NotificationDialog;
+import com.example.informationrecognize.dialog.NotificationDialog.ClickDialogListener;
 import com.example.informationrecognize.main.checkIn.checkInStudent.model.StudentModel;
 import com.example.informationrecognize.main.checkIn.infoStudent.model.CheckInResponse;
 import com.example.informationrecognize.main.checkIn.infoStudent.view.ConfirmCheckInDialog;
@@ -17,7 +19,7 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class InfoStudentViewModel extends ViewModelCommon implements ConfirmCheckInDialog.ClickListener {
+public class InfoStudentViewModel extends ViewModelCommon implements ConfirmCheckInDialog.ClickListener, ClickDialogListener {
 
     private MutableLiveData<StudentModel> studentModel = new MutableLiveData<>();
     private MutableLiveData<ClassItemModel> examRoomModel = new MutableLiveData<>();
@@ -32,6 +34,8 @@ public class InfoStudentViewModel extends ViewModelCommon implements ConfirmChec
     }
 
     private ConfirmCheckInDialog confirmCheckInDialog;
+    private NotificationDialog notificationDialog;
+    private FragmentManager fragmentManager;
 
     public MutableLiveData<ClassItemModel> getExamRoomModel() {
         return examRoomModel;
@@ -51,6 +55,7 @@ public class InfoStudentViewModel extends ViewModelCommon implements ConfirmChec
 
 
     public void showDialogCheckInStudent(FragmentManager fragmentManager) {
+        this.fragmentManager = fragmentManager;
         String nameStudent = "";
         String idStudent = "";
         nameStudent = studentModel.getValue().getNameStudent();
@@ -67,6 +72,9 @@ public class InfoStudentViewModel extends ViewModelCommon implements ConfirmChec
 
     @Override
     public void onClickCheckIn() {
+        if (confirmCheckInDialog != null && confirmCheckInDialog.getShowsDialog()) {
+            confirmCheckInDialog.dismiss();
+        }
         String idStudent = studentModel.getValue().getIdStudent();
         String idExamRoom = examRoomModel.getValue().getIdExamRoom();
         Call<CheckInResponse> checkInStudent = ApiUtils.getDataApi().checkInStudent(idStudent, idExamRoom);
@@ -75,6 +83,7 @@ public class InfoStudentViewModel extends ViewModelCommon implements ConfirmChec
             public void onResponse(Call<CheckInResponse> call, Response<CheckInResponse> response) {
                 if (response.body() != null && "0".equals(response.body().getErrorCode()) && response.body().getData() != null) {
                     if (response.body().getData().getStatus().equals("1")) {
+                        showPopupSuccess();
                         checkInStudentSuccess();
                     } else {
                         Toast.makeText(mActivity, mActivity.getString(R.string.diem_danh_sinh_vien_khong_thanh_cong), Toast.LENGTH_SHORT).show();
@@ -91,6 +100,20 @@ public class InfoStudentViewModel extends ViewModelCommon implements ConfirmChec
         });
     }
 
+    private void showPopupSuccess() {
+        if (notificationDialog != null) {
+            notificationDialog.setData(mActivity.getString(R.string.diem_danh_sinh_vien_thanh_cong)
+                    , mActivity.getString(R.string.dong_y), this);
+            notificationDialog.show(fragmentManager, "");
+        } else {
+            notificationDialog = new NotificationDialog();
+            notificationDialog.setData(mActivity.getString(R.string.diem_danh_sinh_vien_thanh_cong)
+                    , mActivity.getString(R.string.dong_y), this);
+            notificationDialog.show(fragmentManager, "");
+        }
+    }
+
+
     private void checkInStudentSuccess() {
         StudentModel studentModelSuccess = studentModel.getValue();
         studentModelSuccess.setCheckIn(true);
@@ -103,5 +126,10 @@ public class InfoStudentViewModel extends ViewModelCommon implements ConfirmChec
         if (confirmCheckInDialog != null && confirmCheckInDialog.getShowsDialog()) {
             confirmCheckInDialog.dismiss();
         }
+    }
+
+    @Override
+    public void onClickButtonConfirm() {
+        notificationDialog.dismiss();
     }
 }

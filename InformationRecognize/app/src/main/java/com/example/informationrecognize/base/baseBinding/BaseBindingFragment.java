@@ -11,6 +11,7 @@ import androidx.annotation.Nullable;
 import androidx.databinding.DataBindingUtil;
 import androidx.databinding.ViewDataBinding;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentActivity;
 import androidx.lifecycle.ViewModelProvider;
 
 import com.example.informationrecognize.base.ViewModelCommon;
@@ -18,7 +19,7 @@ import com.example.informationrecognize.base.ViewModelCommon;
 import butterknife.ButterKnife;
 
 public abstract class BaseBindingFragment <BD extends ViewDataBinding> extends Fragment {
-    private Activity activity;
+    private FragmentActivity activity;
 
     protected BD binding;
 

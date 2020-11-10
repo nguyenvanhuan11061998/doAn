@@ -11,7 +11,7 @@ public class CheckInSharedViewModel extends ViewModelCommon {
         return isReload;
     }
 
-    public void setIsReload(MutableLiveData<Boolean> isReload) {
-        this.isReload = isReload;
+    public void setIsReload(boolean isReload) {
+        this.isReload.setValue(isReload);
     }
 }

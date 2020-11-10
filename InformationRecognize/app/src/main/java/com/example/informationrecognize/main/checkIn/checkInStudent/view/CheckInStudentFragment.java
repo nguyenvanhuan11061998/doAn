@@ -2,9 +2,11 @@ package com.example.informationrecognize.main.checkIn.checkInStudent.view;
 
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 import androidx.lifecycle.Observer;
+import androidx.lifecycle.ViewModelProvider;
 
 import com.example.informationrecognize.R;
 import com.example.informationrecognize.base.baseBinding.BaseBindingFragment;
@@ -60,7 +62,7 @@ public class CheckInStudentFragment extends BaseBindingFragment<FragmentCheckInS
 
     private void initViewModel() {
         viewModel = getViewModel(CheckInStudentViewModel.class);
-        sharedViewModel = getViewModel(CheckInSharedViewModel.class);
+        sharedViewModel = new ViewModelProvider(getActivity()).get(CheckInSharedViewModel.class);
         viewModel.initViewModel(idRoom, examRoomModel);
 
         viewModel.getListStudent().observe(this, new Observer<List<StudentModel>>() {
@@ -96,6 +98,7 @@ public class CheckInStudentFragment extends BaseBindingFragment<FragmentCheckInS
         sharedViewModel.getIsReload().observe(this, new Observer<Boolean>() {
             @Override
             public void onChanged(Boolean isReload) {
+                Toast.makeText(getActivity(), "gákdjksa", Toast.LENGTH_SHORT).show();
                 if (isReload) {
                     viewModel.initViewModel(idRoom, examRoomModel);
                 }

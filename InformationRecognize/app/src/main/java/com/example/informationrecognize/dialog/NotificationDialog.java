@@ -1,8 +1,6 @@
-package com.example.informationrecognize.main.checkIn.infoStudent.view;
+package com.example.informationrecognize.dialog;
 
-import android.app.AlertDialog;
 import android.app.Dialog;
-import android.app.FragmentManager;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
@@ -10,6 +8,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
+import android.widget.Button;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
@@ -23,19 +22,21 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
-public class ConfirmCheckInDialog extends DialogFragment {
+public class NotificationDialog extends DialogFragment {
+
     @BindView(R.id.tv_des)
     TextView descTextView;
+    @BindView(R.id.btn_confirm)
+    Button confirmButton;
 
-    private String nameStudent = "";
-    private String idStudent = "";
+    private String message = "";
+    private String textButton = "";
+    private ClickDialogListener dialogListener;
 
-    private ClickListener clickListener;
-
-    public void setData(String nameStudent, String idStudent, ClickListener clickListener) {
-        this.nameStudent = nameStudent;
-        this.idStudent = idStudent;
-        this.clickListener = clickListener;
+    public void setData (String message, String textButton, ClickDialogListener dialogListener) {
+        this.message = message;
+        this.textButton = textButton;
+        this.dialogListener = dialogListener;
     }
 
     @NonNull
@@ -58,37 +59,32 @@ public class ConfirmCheckInDialog extends DialogFragment {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.dialog_confirm_checkin, container, false);
+        View view = inflater.inflate(R.layout.dialog_notification, container, false);
         ButterKnife.bind(this, view);
         initView();
         return view;
     }
 
     private void initView() {
-        String message = String.format(getString(R.string.ban_co_muon_diem_danh_sinh_vien), nameStudent, idStudent);
+        confirmButton.setText(textButton);
         descTextView.setText(message);
     }
 
-    @OnClick({R.id.btn_close, R.id.btn_check_in})
+    @OnClick ({R.id.btn_close, R.id.btn_confirm})
     void onClick (View view) {
         switch (view.getId()) {
             case R.id.btn_close:
-                if (clickListener != null) {
-                    dismiss();
-                    clickListener.onClickCancel();
-                }
+                dismiss();
                 break;
-            case R.id.btn_check_in:
-                if (clickListener != null) {
-                    clickListener.onClickCheckIn();
+            case R.id.btn_confirm:
+                if (dialogListener != null) {
+                    dialogListener.onClickButtonConfirm();
                 }
                 break;
         }
     }
 
-    public interface ClickListener {
-        void onClickCheckIn();
-        void onClickCancel();
+    public interface ClickDialogListener {
+        void onClickButtonConfirm ();
     }
-
 }

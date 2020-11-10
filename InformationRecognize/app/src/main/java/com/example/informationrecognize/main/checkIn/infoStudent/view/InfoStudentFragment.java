@@ -5,6 +5,7 @@ import android.view.View;
 import android.widget.Toast;
 
 import androidx.lifecycle.Observer;
+import androidx.lifecycle.ViewModelProvider;
 
 import com.example.informationrecognize.R;
 import com.example.informationrecognize.base.baseBinding.BaseBindingFragment;
@@ -42,7 +43,7 @@ public class InfoStudentFragment extends BaseBindingFragment<FragmentInfoStudent
 
     private void initViewModel() {
         viewModel = getViewModel(InfoStudentViewModel.class);
-        sharedViewModel = getViewModel(CheckInSharedViewModel.class);
+        sharedViewModel = new ViewModelProvider(getActivity()).get(CheckInSharedViewModel.class);
 
         viewModel.getStudentModel().observe(this, new Observer<StudentModel>() {
             @Override
@@ -68,7 +69,7 @@ public class InfoStudentFragment extends BaseBindingFragment<FragmentInfoStudent
             public void onChanged(Boolean reloadHomeCheckIn) {
                 if (reloadHomeCheckIn) {
                     Toast.makeText(getActivity(), "reload", Toast.LENGTH_SHORT).show();
-                    sharedViewModel.getIsReload().postValue(true);
+                    sharedViewModel.setIsReload(true);
                 }
             }
         });

@@ -43,4 +43,6 @@
     <string name="diem_danh">Điểm danh</string>
     <string name="ban_co_muon_diem_danh_sinh_vien">Xác nhận điểm danh sinh viên %s, mã sinh viên %s ?</string>
     <string name="diem_danh_sinh_vien_khong_thanh_cong">Điểm danh sinh viên không thành công.</string>
+    <string name="diem_danh_sinh_vien_thanh_cong">Điểm danh sinh viên thành công.</string>
+    <string name="dong_y">Đồng ý</string>
 </resources>

@@ -4,6 +4,7 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 
 import androidx.annotation.NonNull;
 import androidx.databinding.DataBindingUtil;
@@ -14,6 +15,9 @@ import com.example.informationrecognize.BR;
 import com.example.informationrecognize.R;
 import com.example.informationrecognize.main.checkIn.checkInStudent.model.StudentModel;
 import java.util.List;
+
+import butterknife.BindView;
+import butterknife.ButterKnife;
 
 public class CheckInStudentAdapter extends RecyclerView.Adapter<CheckInStudentAdapter.ViewHolder> {
 
@@ -47,6 +51,7 @@ public class CheckInStudentAdapter extends RecyclerView.Adapter<CheckInStudentAd
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         StudentModel item = listData.get(position);
         holder.binding.setVariable(BR.item, item);
+        holder.binData(item);
         holder.binding.executePendingBindings();
     }
 
@@ -56,11 +61,15 @@ public class CheckInStudentAdapter extends RecyclerView.Adapter<CheckInStudentAd
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder{
+        @BindView(R.id.img_checkIn)
+        ImageView checkInImageView;
+
         ViewDataBinding binding;
 
         public ViewHolder(@NonNull ViewDataBinding binding) {
             super(binding.getRoot());
             this.binding = binding;
+            ButterKnife.bind(this, binding.getRoot());
 
             binding.getRoot().setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -70,6 +79,14 @@ public class CheckInStudentAdapter extends RecyclerView.Adapter<CheckInStudentAd
                     }
                 }
             });
+        }
+
+        public void binData(StudentModel item) {
+            if (item.isCheckIn()) {
+                checkInImageView.setImageResource(R.drawable.ic_checked);
+            } else {
+                checkInImageView.setImageResource(R.drawable.ic_un_checked);
+            }
         }
     }
 

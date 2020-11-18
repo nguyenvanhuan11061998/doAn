@@ -4,6 +4,7 @@ import com.example.informationrecognize.login.loginAccount.model.LoginAccount;
 import com.example.informationrecognize.main.checkIn.checkInStudent.model.ListStudentCheckIn;
 import com.example.informationrecognize.main.checkIn.infoStudent.model.CheckInResponse;
 import com.example.informationrecognize.main.checkIn.mvvm.model.ExamRoomModel;
+import com.example.informationrecognize.main.homeFunction.model.BannerHomeResponse;
 import com.example.informationrecognize.main.other.changePassword.model.ChangePasswordModel;
 
 import retrofit2.Call;
@@ -39,4 +40,7 @@ public interface ApiRepository {
     @POST("checkIn.php")
     Call<CheckInResponse> checkInStudent(@Field("idStudent") String idStudent,
                                          @Field("idExamRoom") String idExamRoom);
+
+    @POST("listBannerHome.php")
+    Call<BannerHomeResponse> getListBannerHome();
 }

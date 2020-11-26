@@ -49,6 +49,381 @@
                         android:layout_height="wrap_content"
                         app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"/>
 
+                    <androidx.cardview.widget.CardView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginRight="10dp"
+                        android:layout_marginBottom="10dp"
+                        android:elevation="5dp"
+                        android:translationZ="5dp"
+                        app:cardCornerRadius="5dp">
+
+                        <LinearLayout
+                            android:layout_margin="10dp"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:textColor="@color/colorBlack"
+                                android:text="Thông tin giảng viên"
+                                android:textStyle="bold"
+                                android:textSize="15sp"
+                                android:layout_gravity="center_horizontal"
+                                android:gravity="center_horizontal"/>
+
+                            <LinearLayout
+                                android:layout_marginTop="5dp"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="horizontal">
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="Nguyễn Văn Huân"
+                                    android:textStyle="bold"
+                                    android:textColor="@color/colorBlue"
+                                    android:textSize="13sp" />
+
+                                <TextView
+                                    android:layout_marginLeft="2dp"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="(PGS.TS)"
+                                    android:textColor="@color/colorBlack"
+                                    android:textSize="13sp" />
+
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_marginTop="5dp"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="horizontal">
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="Mã giảng viên: "
+                                    android:textColor="@color/colorBlack"
+                                    android:textSize="13sp"/>
+
+                                <TextView
+                                    android:layout_marginLeft="5dp"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="001"
+                                    android:textColor="@color/colorBlack"
+                                    android:textSize="13sp" />
+
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_marginTop="5dp"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="horizontal">
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="Chức vụ: "
+                                    android:textColor="@color/colorBlack"
+                                    android:textSize="13sp"/>
+
+                                <TextView
+                                    android:layout_marginLeft="5dp"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="Phó trưởng khoa kiêm trưởng bộ môn
+BM Hệ thống thông tin, Khoa CNTT, C1 ĐH Thủy lợi, Hà nội
+Bộ môn Hệ thống thông tin."
+                                    android:textColor="@color/colorBlack"
+                                    android:textSize="13sp" />
+
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_marginTop="5dp"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="horizontal">
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="Email: "
+                                    android:textColor="@color/colorBlack"
+                                    android:textSize="13sp"/>
+
+                                <TextView
+                                    android:layout_marginLeft="5dp"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="binhpt@tlu.edu.vn"
+                                    android:textColor="@color/colorBlack"
+                                    android:textSize="13sp" />
+
+                            </LinearLayout>
+
+                        </LinearLayout>
+
+                    </androidx.cardview.widget.CardView>
+
+                    <androidx.cardview.widget.CardView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginRight="10dp"
+                        android:layout_marginBottom="10dp"
+                        android:elevation="5dp"
+                        android:translationZ="5dp"
+                        app:cardCornerRadius="5dp">
+
+                        <LinearLayout
+                            android:layout_margin="10dp"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:textColor="@color/colorBlack"
+                                android:text="Trạng thái hiện tại"
+                                android:textStyle="bold"
+                                android:textSize="14sp"
+                                android:layout_gravity="center_horizontal"
+                                android:gravity="center_horizontal"/>
+
+                            <LinearLayout
+                                android:layout_marginTop="5dp"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="horizontal">
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="Trạng thái hiện tại: "
+                                    android:textColor="@color/colorBlack"
+                                    android:textSize="13sp" />
+
+                                <TextView
+                                    android:layout_marginLeft="2dp"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="Đang coi thi"
+                                    android:textColor="@color/colorRed"
+                                    android:textStyle="bold"
+                                    android:textSize="13sp" />
+
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_marginTop="5dp"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="horizontal">
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="Phòng thi: "
+                                    android:textColor="@color/colorBlack"
+                                    android:textSize="13sp"/>
+
+                                <TextView
+                                    android:layout_marginLeft="5dp"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="307 - A5"
+                                    android:textColor="@color/colorBlack"
+                                    android:textSize="13sp" />
+
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_marginTop="5dp"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="horizontal">
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="Môn thi: "
+                                    android:textColor="@color/colorBlack"
+                                    android:textSize="13sp"/>
+
+                                <TextView
+                                    android:layout_marginLeft="5dp"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="Kiến trúc máy tính"
+                                    android:textColor="@color/colorBlack"
+                                    android:textSize="13sp" />
+
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_marginTop="5dp"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="horizontal">
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="Thời gian: "
+                                    android:textColor="@color/colorBlack"
+                                    android:textSize="13sp"/>
+
+                                <TextView
+                                    android:layout_marginLeft="5dp"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="08:20:00 - 09:20:00"
+                                    android:textColor="@color/colorYellow"
+                                    android:textSize="13sp" />
+
+                            </LinearLayout>
+
+                        </LinearLayout>
+
+                    </androidx.cardview.widget.CardView>
+
+                    <androidx.cardview.widget.CardView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginRight="10dp"
+                        android:layout_marginBottom="10dp"
+                        android:elevation="5dp"
+                        android:translationZ="5dp"
+                        app:cardCornerRadius="5dp">
+
+                        <LinearLayout
+                            android:layout_margin="10dp"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:textColor="@color/colorBlack"
+                                android:text="Thông tin khác"
+                                android:textStyle="bold"
+                                android:textSize="14sp"
+                                android:layout_gravity="center_horizontal"
+                                android:gravity="center_horizontal"/>
+
+                            <LinearLayout
+                                android:layout_marginTop="5dp"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="horizontal">
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="Số phòng thi còn lại: "
+                                    android:textColor="@color/colorBlack"
+                                    android:textStyle="bold"
+                                    android:textSize="13sp" />
+
+                                <TextView
+                                    android:layout_marginLeft="2dp"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="3"
+                                    android:textColor="@color/colorRed"
+                                    android:textStyle="bold"
+                                    android:textSize="13sp" />
+
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_marginTop="5dp"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="horizontal">
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="Phòng thi sắp coi: "
+                                    android:textColor="@color/colorBlack"
+                                    android:textSize="13sp"/>
+
+                                <TextView
+                                    android:layout_marginLeft="5dp"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="307 - A5"
+                                    android:textColor="@color/colorBlack"
+                                    android:textSize="13sp" />
+
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_marginTop="5dp"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="horizontal">
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="Môn thi dự kiến: "
+                                    android:textColor="@color/colorBlack"
+                                    android:textSize="13sp"/>
+
+                                <TextView
+                                    android:layout_marginLeft="5dp"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="Kiến trúc máy tính"
+                                    android:textColor="@color/colorBlack"
+                                    android:textSize="13sp" />
+
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_marginTop="5dp"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="horizontal">
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="Thời gian dự kiến: "
+                                    android:textColor="@color/colorBlack"
+                                    android:textSize="13sp"/>
+
+                                <TextView
+                                    android:layout_marginLeft="5dp"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="08:20:00 - 09:20:00  20/12/2020"
+                                    android:textColor="@color/colorYellow"
+                                    android:textSize="13sp" />
+
+                            </LinearLayout>
+
+                        </LinearLayout>
+
+                    </androidx.cardview.widget.CardView>
+
                 </LinearLayout>
 
             </RelativeLayout>

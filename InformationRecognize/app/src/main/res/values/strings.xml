@@ -45,4 +45,6 @@
     <string name="diem_danh_sinh_vien_khong_thanh_cong">Điểm danh sinh viên không thành công.</string>
     <string name="diem_danh_sinh_vien_thanh_cong">Điểm danh sinh viên thành công.</string>
     <string name="dong_y">Đồng ý</string>
+    <string name="dang_xuat">Đăng xuất</string>
+    <string name="tin_tuc">Tin tức</string>
 </resources>

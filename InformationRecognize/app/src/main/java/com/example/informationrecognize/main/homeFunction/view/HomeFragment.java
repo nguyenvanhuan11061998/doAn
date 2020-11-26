@@ -6,6 +6,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.LinearSnapHelper;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.recyclerview.widget.SnapHelper;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import com.example.informationrecognize.R;
 import com.example.informationrecognize.base.BaseFragment;
@@ -20,6 +21,8 @@ import butterknife.BindView;
 public class HomeFragment extends BaseFragment {
     @BindView(R.id.rv_list_banner)
     RecyclerView listBannerView;
+    @BindView(R.id.swipeRefreshLayout)
+    SwipeRefreshLayout swipeRefreshLayout;
 
     private HomeViewModel viewModel;
     private ListBannerAdapter bannerAdapter;
@@ -45,7 +48,13 @@ public class HomeFragment extends BaseFragment {
     }
 
     private void initView() {
-
+        swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                initViewModel();
+                viewModel.getIsDismissRefresh().setValue(false);
+            }
+        });
     }
 
     private void initViewModel() {
@@ -71,6 +80,15 @@ public class HomeFragment extends BaseFragment {
                     snapHelperCenter.attachToRecyclerView(listBannerView);
                 } else {
                     bannerAdapter.setListData(bannerHomes);
+                }
+            }
+        });
+
+        viewModel.getIsDismissRefresh().observe(this, new Observer<Boolean>() {
+            @Override
+            public void onChanged(Boolean isDismissRefresh) {
+                if (isDismissRefresh) {
+                    swipeRefreshLayout.setRefreshing(false);
                 }
             }
         });

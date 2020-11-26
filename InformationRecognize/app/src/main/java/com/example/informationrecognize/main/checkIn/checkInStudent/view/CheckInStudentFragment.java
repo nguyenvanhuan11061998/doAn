@@ -2,6 +2,7 @@ package com.example.informationrecognize.main.checkIn.checkInStudent.view;
 
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.Toast;
 
 import androidx.annotation.Nullable;
@@ -18,11 +19,17 @@ import com.example.informationrecognize.main.checkIn.mvvm.model.ClassItemModel;
 
 import java.util.List;
 
+import butterknife.BindView;
+import butterknife.OnClick;
+
 import static com.example.informationrecognize.main.checkIn.CheckInStudentActivity.ID_ROOM;
 import static com.example.informationrecognize.main.checkIn.CheckInStudentActivity.ROOM;
 
 public class CheckInStudentFragment extends BaseBindingFragment<FragmentCheckInStudentBinding>
         implements CheckInStudentAdapter.ClickItemListener {
+
+    @BindView(R.id.btn_check_in)
+    Button btnCheckIn;
 
     private CheckInStudentViewModel viewModel;
     private CheckInStudentAdapter adapter;
@@ -98,10 +105,16 @@ public class CheckInStudentFragment extends BaseBindingFragment<FragmentCheckInS
         sharedViewModel.getIsReload().observe(this, new Observer<Boolean>() {
             @Override
             public void onChanged(Boolean isReload) {
-                Toast.makeText(getActivity(), "gákdjksa", Toast.LENGTH_SHORT).show();
                 if (isReload) {
                     viewModel.initViewModel(idRoom, examRoomModel);
                 }
+            }
+        });
+
+        viewModel.getIsEnableButtonCheckIn().observe(this, new Observer<Boolean>() {
+            @Override
+            public void onChanged(Boolean isEnableButton) {
+                setStatusButton(isEnableButton);
             }
         });
     }
@@ -123,6 +136,25 @@ public class CheckInStudentFragment extends BaseBindingFragment<FragmentCheckInS
 
         public void backImageViewClick(View view) {
             viewModel.back();
+        }
+    }
+
+    @OnClick({R.id.btn_check_in})
+    void OnClick(View view) {
+        switch (view.getId()) {
+            case R.id.btn_check_in:
+                    viewModel.openCamera();
+                break;
+        }
+    }
+
+    public void setStatusButton(boolean isEnable) {
+        if (isEnable) {
+            btnCheckIn.setBackground(getContext().getDrawable(R.drawable.custom_round_corner_button));
+            btnCheckIn.setEnabled(true);
+        } else {
+            btnCheckIn.setBackground(getContext().getDrawable(R.drawable.custom_round_corner_button_disable));
+            btnCheckIn.setEnabled(false);
         }
     }
 }

@@ -4,6 +4,7 @@
     <uses-feature
         android:name="android.hardware.camera"
         android:required="true"/>
+    <uses-permission android:name="android.permission.CAMERA"/>
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
 
 
@@ -29,6 +30,7 @@
         <activity android:name=".main.MainActivity"/>
         <activity android:name=".main.other.OtherUtilsActivity"/>
         <activity android:name=".main.checkIn.CheckInStudentActivity"/>
+        <activity android:name=".main.linkWebView.OpenWebViewActivity"/>
 
         <provider
             android:name="androidx.core.content.FileProvider"

@@ -1,6 +1,10 @@
 package com.example.informationrecognize.main.checkIn.checkInStudent.viewModel;
 import android.app.Activity;
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
+import android.os.Environment;
+import android.provider.MediaStore;
 import android.widget.Toast;
 
 import androidx.lifecycle.MutableLiveData;
@@ -8,6 +12,7 @@ import androidx.lifecycle.MutableLiveData;
 import com.example.informationrecognize.R;
 import com.example.informationrecognize.base.ViewModelCommon;
 import com.example.informationrecognize.base.baseApi.ApiUtils;
+import com.example.informationrecognize.main.checkIn.CameraCheckinFragment;
 import com.example.informationrecognize.main.checkIn.CheckInStudentActivity;
 import com.example.informationrecognize.main.checkIn.checkInStudent.model.ListStudentCheckIn;
 import com.example.informationrecognize.main.checkIn.checkInStudent.model.StudentModel;
@@ -15,6 +20,7 @@ import com.example.informationrecognize.main.checkIn.infoStudent.view.InfoStuden
 import com.example.informationrecognize.main.checkIn.mvvm.model.ClassItemModel;
 import com.example.informationrecognize.main.information.view.InformationFragment;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -26,11 +32,21 @@ import static com.example.informationrecognize.main.checkIn.CheckInStudentActivi
 
 public class CheckInStudentViewModel extends ViewModelCommon {
 
+    public static final int PHOTO_REQUEST = 1998;
     public static final String STUDENT_MODEL = "STUDENT_MODEL";
+
     private MutableLiveData<List<StudentModel>> listStudent = new MutableLiveData<>();
     private MutableLiveData<ClassItemModel> examRoomModel=  new MutableLiveData<>();
-
     private MutableLiveData<String> numStudentCheckIn = new MutableLiveData<>();
+    private MutableLiveData<Boolean> isEnableButtonCheckIn = new MutableLiveData<>();
+
+    public MutableLiveData<Boolean> getIsEnableButtonCheckIn() {
+        return isEnableButtonCheckIn;
+    }
+
+    public void setIsEnableButtonCheckIn(MutableLiveData<Boolean> isEnableButtonCheckIn) {
+        this.isEnableButtonCheckIn = isEnableButtonCheckIn;
+    }
 
     public MutableLiveData<String> getNumStudentCheckIn() {
         return numStudentCheckIn;
@@ -109,5 +125,18 @@ public class CheckInStudentViewModel extends ViewModelCommon {
 
         String countCheckIn = countCheckin + "/" + numStudent;
         numStudentCheckIn.postValue(countCheckIn);
+
+        if (String.valueOf(countCheckin).equals(numStudent)) {
+            isEnableButtonCheckIn.setValue(false);
+        } else {
+            isEnableButtonCheckIn.setValue(true);
+        }
     }
+
+    public void openCamera() {
+        CheckInStudentActivity activity = (CheckInStudentActivity) mActivity;
+        activity.openCamera();
+    }
+
+
 }

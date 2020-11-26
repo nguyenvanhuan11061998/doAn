@@ -7,6 +7,7 @@ import com.example.informationrecognize.main.checkIn.mvvm.model.ExamRoomModel;
 import com.example.informationrecognize.main.homeFunction.model.BannerHomeResponse;
 import com.example.informationrecognize.main.other.changePassword.model.ChangePasswordModel;
 
+import io.reactivex.Observable;
 import retrofit2.Call;
 import retrofit2.http.Field;
 import retrofit2.http.FormUrlEncoded;
@@ -42,5 +43,5 @@ public interface ApiRepository {
                                          @Field("idExamRoom") String idExamRoom);
 
     @POST("listBannerHome.php")
-    Call<BannerHomeResponse> getListBannerHome();
+    Observable<BannerHomeResponse> getListBannerHome();
 }

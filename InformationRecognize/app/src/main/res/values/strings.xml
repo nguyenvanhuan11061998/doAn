@@ -47,4 +47,6 @@
     <string name="dong_y">Đồng ý</string>
     <string name="dang_xuat">Đăng xuất</string>
     <string name="tin_tuc">Tin tức</string>
+    <string name="diem_danh_cho_sinh_vien_thanh_cong">Bạn đã điểm danh cho sinh viên: %s, Mã sinh viên: %s thành công.</string>
+    <string name="diem_danh_thanh_cong">Điểm danh thành công</string>
 </resources>

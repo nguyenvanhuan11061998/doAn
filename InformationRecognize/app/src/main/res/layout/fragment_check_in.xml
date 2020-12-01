@@ -12,14 +12,8 @@
         android:orientation="horizontal"
         android:background="@color/colorBlue">
 
-        <ImageView
-            android:id="@+id/img_back"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:src="@drawable/ic_back_v4"
-            android:padding="13dp"/>
-
         <TextView
+            android:padding="13dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/tv_title"

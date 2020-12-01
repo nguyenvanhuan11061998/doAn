@@ -1,5 +1,7 @@
 package com.example.informationrecognize.base.baseApi;
 
+import android.net.Uri;
+
 import com.example.informationrecognize.login.loginAccount.model.LoginAccount;
 import com.example.informationrecognize.main.checkIn.checkInStudent.model.ListStudentCheckIn;
 import com.example.informationrecognize.main.checkIn.infoStudent.model.CheckInResponse;
@@ -41,6 +43,11 @@ public interface ApiRepository {
     @POST("checkIn.php")
     Call<CheckInResponse> checkInStudent(@Field("idStudent") String idStudent,
                                          @Field("idExamRoom") String idExamRoom);
+
+    @FormUrlEncoded
+    @POST("checkInByAI.php")
+    Call<CheckInResponse> checkInStudentByAI(@Field("uri") Uri uri,
+                                             @Field("idExamRoom") String idExamRoom);
 
     @POST("listBannerHome.php")
     Observable<BannerHomeResponse> getListBannerHome();

@@ -1,8 +1,10 @@
 package com.example.informationrecognize.main.checkIn.checkInStudent.view;
 
+import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import androidx.annotation.Nullable;
@@ -68,9 +70,11 @@ public class CheckInStudentFragment extends BaseBindingFragment<FragmentCheckInS
     }
 
     private void initViewModel() {
-        viewModel = getViewModel(CheckInStudentViewModel.class);
+        viewModel = new ViewModelProvider(getActivity()).get(CheckInStudentViewModel.class);
         sharedViewModel = new ViewModelProvider(getActivity()).get(CheckInSharedViewModel.class);
-        viewModel.initViewModel(idRoom, examRoomModel);
+        viewModel.initViewModel(idRoom, examRoomModel, getActivity().getSupportFragmentManager());
+
+        viewModel.getmActivity().setValue(getActivity());
 
         viewModel.getListStudent().observe(this, new Observer<List<StudentModel>>() {
             @Override
@@ -106,7 +110,7 @@ public class CheckInStudentFragment extends BaseBindingFragment<FragmentCheckInS
             @Override
             public void onChanged(Boolean isReload) {
                 if (isReload) {
-                    viewModel.initViewModel(idRoom, examRoomModel);
+                    viewModel.initViewModel(idRoom, examRoomModel, getActivity().getSupportFragmentManager());
                 }
             }
         });
@@ -115,6 +119,15 @@ public class CheckInStudentFragment extends BaseBindingFragment<FragmentCheckInS
             @Override
             public void onChanged(Boolean isEnableButton) {
                 setStatusButton(isEnableButton);
+            }
+        });
+
+        viewModel.getIsFinish().observe(this, new Observer<Boolean>() {
+            @Override
+            public void onChanged(Boolean isFinish) {
+                if (isFinish) {
+                    getActivity().finish();
+                }
             }
         });
     }

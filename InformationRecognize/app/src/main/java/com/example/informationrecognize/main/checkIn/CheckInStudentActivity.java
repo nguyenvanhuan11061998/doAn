@@ -1,6 +1,7 @@
 package com.example.informationrecognize.main.checkIn;
 
 import android.Manifest;
+import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
@@ -10,21 +11,33 @@ import android.os.Bundle;
 import android.os.Environment;
 import android.provider.MediaStore;
 import android.util.Log;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.core.app.ActivityCompat;
+import androidx.core.content.FileProvider;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.Observer;
+import androidx.lifecycle.ViewModelProvider;
 
+import com.example.informationrecognize.base.baseApi.ApiUtils;
 import com.example.informationrecognize.base.baseBinding.BaseBindingActivity;
 import com.example.informationrecognize.databinding.ActivityBaseBindingBinding;
 import com.example.informationrecognize.main.checkIn.checkInStudent.view.CheckInStudentFragment;
 import com.example.informationrecognize.main.checkIn.checkInStudent.viewModel.CheckInStudentViewModel;
+import com.example.informationrecognize.main.checkIn.infoStudent.model.CheckInResponse;
 import com.example.informationrecognize.main.checkIn.mvvm.model.ClassItemModel;
 
+import java.io.ByteArrayOutputStream;
 import java.io.File;
-import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 import static com.example.informationrecognize.main.checkIn.checkInStudent.viewModel.CheckInStudentViewModel.PHOTO_REQUEST;
 
@@ -33,6 +46,8 @@ public class CheckInStudentActivity extends BaseBindingActivity<ActivityBaseBind
     public static String ID_ROOM = "ID_ROOM";
     public static String ROOM = "ROOM";
     private Uri imageUri;
+
+    private CheckInStudentViewModel viewModel;
 
     @Override
     protected void intAct() {
@@ -50,73 +65,47 @@ public class CheckInStudentActivity extends BaseBindingActivity<ActivityBaseBind
             pushView(CheckInStudentFragment.getInstance(bundle));
         }
 
-
-        initPermission();
+        initViewModel();
     }
 
-    private void initPermission() {
-        // Với Android Level >= 23 bạn phải hỏi người dùng cho phép ghi dữ liệu vào thiết bị.
-        if (android.os.Build.VERSION.SDK_INT >= 23) {
-
-
-            // Kiểm tra quyền đọc/ghi dữ liệu vào thiết bị lưu trữ ngoài.
-            int readPermission = ActivityCompat.checkSelfPermission(this,
-                    Manifest.permission.READ_EXTERNAL_STORAGE);
-            int writePermission = ActivityCompat.checkSelfPermission(this,
-                    Manifest.permission.WRITE_EXTERNAL_STORAGE);
-
-            if (writePermission != PackageManager.PERMISSION_GRANTED ||
-                    readPermission != PackageManager.PERMISSION_GRANTED) {
-
-                // Nếu không có quyền, cần nhắc người dùng cho phép.
-                this.requestPermissions(
-                        new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE,
-                                Manifest.permission.READ_EXTERNAL_STORAGE},
-                        REQUEST_ID_READ_WRITE_PERMISSION
-                );
-            }
-        }
-    }
-
-    @Override
-    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
-        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
-        switch (requestCode) {
-            case REQUEST_ID_READ_WRITE_PERMISSION: {
-                // Chú ý: Nếu yêu cầu bị hủy, mảng kết quả trả về là rỗng.
-                // Người dùng đã cấp quyền (đọc/ghi).
-                if (grantResults.length > 1
-                        && grantResults[0] == PackageManager.PERMISSION_GRANTED
-                        && grantResults[1] == PackageManager.PERMISSION_GRANTED) {
-
-                    Toast.makeText(this, "Permission granted!", Toast.LENGTH_LONG).show();
-
+    private void initViewModel() {
+        viewModel = new ViewModelProvider(this).get(CheckInStudentViewModel.class);
+        viewModel.getIsOpenCamera().observe(this, new Observer<Boolean>() {
+            @Override
+            public void onChanged(Boolean isOpenCamera) {
+                if (isOpenCamera) {
+                    openCamera();
                 }
-                // Hủy bỏ hoặc bị từ chối.
-                else {
-                    Toast.makeText(this, "Permission denied!", Toast.LENGTH_LONG).show();
-                }
-                break;
             }
-        }
+        });
     }
 
     public void openCamera() {
         Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-        startActivityForResult(intent, PHOTO_REQUEST);
+            startActivityForResult(intent, PHOTO_REQUEST);
     }
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
+        viewModel.getIsOpenCamera().setValue(false);
         if (resultCode == RESULT_OK && requestCode == PHOTO_REQUEST) {
             Bitmap bp = (Bitmap) data.getExtras().get("data");
-            Log.e("==", bp.toString());
+            Uri tempUri = getImageUri(getApplicationContext(), bp);
+            viewModel.callApiCheckInByAI(tempUri);
         }
+    }
+
+    private Uri getImageUri(Context applicationContext, Bitmap photo) {
+        ByteArrayOutputStream bytes = new ByteArrayOutputStream();
+        photo.compress(Bitmap.CompressFormat.JPEG, 100, bytes);
+        String path = MediaStore.Images.Media.insertImage(this.getContentResolver(), photo, "Title", null);
+        return Uri.parse(path);
     }
 
     @Override
     public void pushView(Fragment fragment) {
         super.pushView(fragment);
     }
+
 }

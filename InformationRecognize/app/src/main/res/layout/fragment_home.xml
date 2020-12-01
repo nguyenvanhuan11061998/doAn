@@ -28,7 +28,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Hệ thống điểm danh sinh viên \n Đại học Thủy Lợi"
+                    android:text="Hệ thống điểm danh thi cử \n Đại học Thủy Lợi"
                     android:layout_centerHorizontal="true"
                     android:gravity="center_horizontal"
                     android:textColor="@color/colorWhite"

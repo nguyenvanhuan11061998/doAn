@@ -1,43 +1,29 @@
 package com.example.informationrecognize.main.checkIn;
 
-import android.Manifest;
 import android.content.Context;
 import android.content.Intent;
-import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Bundle;
-import android.os.Environment;
 import android.provider.MediaStore;
 import android.util.Log;
-import android.widget.ImageView;
-import android.widget.Toast;
+import android.util.SparseArray;
 
-import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.core.app.ActivityCompat;
-import androidx.core.content.FileProvider;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
-import com.example.informationrecognize.base.baseApi.ApiUtils;
 import com.example.informationrecognize.base.baseBinding.BaseBindingActivity;
 import com.example.informationrecognize.databinding.ActivityBaseBindingBinding;
 import com.example.informationrecognize.main.checkIn.checkInStudent.view.CheckInStudentFragment;
 import com.example.informationrecognize.main.checkIn.checkInStudent.viewModel.CheckInStudentViewModel;
-import com.example.informationrecognize.main.checkIn.infoStudent.model.CheckInResponse;
 import com.example.informationrecognize.main.checkIn.mvvm.model.ClassItemModel;
+import com.google.android.gms.vision.Frame;
+import com.google.android.gms.vision.text.TextBlock;
+import com.google.android.gms.vision.text.TextRecognizer;
 
 import java.io.ByteArrayOutputStream;
-import java.io.File;
-import java.io.FileOutputStream;
-import java.io.IOException;
-
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
 
 import static com.example.informationrecognize.main.checkIn.checkInStudent.viewModel.CheckInStudentViewModel.PHOTO_REQUEST;
 
@@ -45,12 +31,13 @@ public class CheckInStudentActivity extends BaseBindingActivity<ActivityBaseBind
     private static final int REQUEST_ID_READ_WRITE_PERMISSION = 0;
     public static String ID_ROOM = "ID_ROOM";
     public static String ROOM = "ROOM";
-    private Uri imageUri;
+    private TextRecognizer detector;
 
     private CheckInStudentViewModel viewModel;
 
     @Override
     protected void intAct() {
+        detector = new TextRecognizer.Builder(getApplicationContext()).build();
         String idRoom = "";
         ClassItemModel examRoom = null;
         Intent intent = getIntent();
@@ -90,9 +77,27 @@ public class CheckInStudentActivity extends BaseBindingActivity<ActivityBaseBind
         super.onActivityResult(requestCode, resultCode, data);
         viewModel.getIsOpenCamera().setValue(false);
         if (resultCode == RESULT_OK && requestCode == PHOTO_REQUEST) {
-            Bitmap bp = (Bitmap) data.getExtras().get("data");
-            Uri tempUri = getImageUri(getApplicationContext(), bp);
-            viewModel.callApiCheckInByAI(tempUri);
+            try {
+                Bitmap bitmap = (Bitmap) data.getExtras().get("data");
+                if (detector.isOperational() && bitmap != null) {
+                    Frame frame = new Frame.Builder().setBitmap(bitmap).build();
+                    SparseArray<TextBlock> textBlocks = detector.detect(frame);
+                    String blocks = "";
+                    for (int index = 0; index < textBlocks.size(); index++) {
+                        TextBlock tBlock = textBlocks.valueAt(index);
+                        blocks = blocks + tBlock.getValue() + "\n" + "\n";
+                    }
+                    if (textBlocks.size() == 0) {
+                        Log.e("======", " không thấy có ký tự trong ảnh");
+                    } else {
+                        Log.e("========", blocks);
+                    }
+                } else {
+                    Log.e("=======", "Could not set up the detector!");
+                }
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
         }
     }
 

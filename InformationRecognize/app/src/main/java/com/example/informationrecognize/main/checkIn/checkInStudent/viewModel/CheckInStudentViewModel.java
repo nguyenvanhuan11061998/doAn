@@ -1,11 +1,7 @@
 package com.example.informationrecognize.main.checkIn.checkInStudent.viewModel;
 import android.app.Activity;
-import android.content.Intent;
-import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
-import android.os.Environment;
-import android.provider.MediaStore;
 import android.widget.Toast;
 
 import androidx.fragment.app.FragmentManager;
@@ -16,7 +12,6 @@ import com.example.informationrecognize.base.ViewModelCommon;
 import com.example.informationrecognize.base.baseApi.ApiUtils;
 import com.example.informationrecognize.dialog.CheckInByAiSuccessDialog;
 import com.example.informationrecognize.dialog.NotificationDialog;
-import com.example.informationrecognize.main.checkIn.CameraCheckinFragment;
 import com.example.informationrecognize.main.checkIn.CheckInStudentActivity;
 import com.example.informationrecognize.main.checkIn.checkInStudent.model.ListStudentCheckIn;
 import com.example.informationrecognize.main.checkIn.checkInStudent.model.StudentModel;

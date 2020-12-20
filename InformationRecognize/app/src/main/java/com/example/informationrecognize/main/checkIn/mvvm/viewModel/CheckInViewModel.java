@@ -31,7 +31,9 @@ public class CheckInViewModel extends ViewModelCommon {
     }
 
     public void initData() {
-        getListExamRoom();
+        if (Utils.getUserLogin() != null) {
+            getListExamRoom();
+        }
     }
 
     private void getListExamRoom() {
